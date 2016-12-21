@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jero.motelmalltest.mapper.home.GoodsMapper" >
+  <resultMap id="GoodsMap" type="com.jero.motelmalltest.po.home.Goods" >
+    <id column="GOODS_ID" property="goodsId" jdbcType="VARCHAR" />
+    <result column="SELLER_ID" property="sellerId" jdbcType="VARCHAR" />
+    <result column="GOODS_NAME" property="goodsName" jdbcType="VARCHAR" />
+    <result column="GOODS_TYPE_ID" property="goodsTypeId" jdbcType="VARCHAR" />
+    <result column="GOODS_INTRODUCE" property="goodsIntroduce" jdbcType="VARCHAR" />
+    <result column="GOODS_GUIDE_PRICE" property="goodsGuidePrice" jdbcType="VARCHAR" />
+    <result column="GOODS_SALES_VOLUME" property="goodsSalesVolume" jdbcType="INTEGER" />
+    <result column="STORAGE_TIME" property="storageTime" jdbcType="TIMESTAMP" />
+    <result column="ON_SHELVES_TIME" property="onShelvesTime" jdbcType="TIMESTAMP" />
+    <result column="COMMENT_AVERAGE" property="commentAverage" jdbcType="FLOAT" />
+    <result column="GOODS_TITEL" property="goodsTitel" jdbcType="VARCHAR" />
+    <result column="GOODS_STATUS" property="goodsStatus" jdbcType="VARCHAR" />
+    <result column="GOODS_TYPE" property="goodsType" jdbcType="VARCHAR" />
+    <result column="IS_LOCK" property="isLock" jdbcType="VARCHAR" />
+    <result column="UNIT" property="unit" jdbcType="VARCHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="VARCHAR" />
+    <result column="RELEASE_TYPE" property="releaseType" jdbcType="VARCHAR" />
+    <result column="BRAND" property="brand" jdbcType="VARCHAR" />
+    <result column="CAR_TYPE" property="carType" jdbcType="VARCHAR" />
+    <result column="GOODS_DISTRIBUTION_MODE" property="goodsDistributionMode" jdbcType="VARCHAR" />
+    <result column="GOODS_PROCESSING_STATUS" property="goodsProcessingStatus" jdbcType="VARCHAR" />
+    <result column="INFORMATION_UPDATE_TIME" property="informationUpdateTime" jdbcType="TIMESTAMP" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <association property="goodsClass" javaType="com.jero.motelmalltest.po.home.GoodsClass" resultMap="GoodsClassMap"/>
+    <association property="enterpriseUser" javaType="com.jero.motelmalltest.po.home.EnterpriseUser" resultMap="EnterpriseUserMap"/>  
+  </resultMap>
+  
+  <resultMap id="GoodsClassMap" type="com.jero.motelmalltest.po.home.GoodsClass" >
+    <id column="GOODS_CLASS_ID" property="goodsClassId" jdbcType="VARCHAR" />
+    <result column="CLASS_NAME" property="className" jdbcType="VARCHAR" />
+    <result column="PARENT_CLASS_ID" property="parentClassId" jdbcType="VARCHAR" />
+    <result column="HAS_CHILD" property="hasChild" jdbcType="VARCHAR" />
+    <result column="GOODS_CLASS_ORDER" property="goodsClassOrder" jdbcType="VARCHAR" />
+    <result column="GOODS_CLASS_STATUS" property="goodsClassStatus" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="EnterpriseUserMap" type="com.jero.motelmalltest.po.home.EnterpriseUser" >
+    <id column="ENTERPRISE_USER_ID" property="enterpriseUserId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_NAME" property="enterpriseName" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_ADDRESS" property="enterpriseAddress" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_CONTACT" property="enterpriseContact" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_ZIP_CODE" property="enterpriseZipCode" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_STATUS" property="enterpriseStatus" jdbcType="VARCHAR" />
+    <result column="AVAILABLE_INTEGRAL" property="availableIntegral" jdbcType="INTEGER" />
+    <result column="FREEZING_INTEGRAL" property="freezingIntegral" jdbcType="INTEGER" />
+    <result column="MODIFI_TIME" property="modifiTime" jdbcType="TIMESTAMP" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="goodsList" resultMap="GoodsMap" parameterType="java.lang.String">
+  SELECT 
+	 A.GOODS_ID,A.SELLER_ID,A.GOODS_NAME,A.GOODS_TYPE_ID,
+	 A.GOODS_INTRODUCE,A.GOODS_GUIDE_PRICE,A.GOODS_SALES_VOLUME,
+	 A.STORAGE_TIME,A.ON_SHELVES_TIME,A.COMMENT_AVERAGE,A.GOODS_TITEL,
+	 A.GOODS_STATUS,A.GOODS_TYPE,A.IS_LOCK,A.UNIT,A.IS_DELETE,A.RELEASE_TYPE,
+	 A.BRAND,A.CAR_TYPE,A.GOODS_DISTRIBUTION_MODE,A.GOODS_PROCESSING_STATUS,
+	 A.INFORMATION_UPDATE_TIME,A.COMMENTS,B.GOODS_CLASS_ID,B.CLASS_NAME,B.PARENT_CLASS_ID,
+	 B.HAS_CHILD,B.GOODS_CLASS_ORDER,B.GOODS_CLASS_STATUS,B.COMMENTS,C.ENTERPRISE_USER_ID,
+	 C.USER_ID,C.ENTERPRISE_NAME,C.ENTERPRISE_ADDRESS,C.ENTERPRISE_CONTACT,C.ENTERPRISE_ZIP_CODE,
+	 C.ENTERPRISE_STATUS,C.AVAILABLE_INTEGRAL,C.FREEZING_INTEGRAL,C.MODIFI_TIME,C.COMMENTS
+  FROM GOODS A JOIN GOODS_CLASS B ON A.GOODS_TYPE_ID = B.GOODS_CLASS_ID
+  JOIN ENTERPRISE_USER C ON A.SELLER_ID = C.ENTERPRISE_USER_ID
+  <where>
+  	<if test="className != null and className != ''">
+  		B.CLASS_NAME =#{className}
+  	</if>
+  </where>
+  ORDER BY GOODS_SALES_VOLUME DESC
+  LIMIT 6
+  </select>
+  
+  <update id="UpDate" resultMap="GoodsMap">
+         UPDATE TABLE phone 
+         SET
+         name=name
+         <where>
+         
+         </where> 
+          
+  </update>
+  
+  
+</mapper>

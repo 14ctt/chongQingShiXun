@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jero.motelmalltest.mapper.home.EnterpriseUserMapper" >
+  <resultMap id="BaseResultMap" type="com.jero.motelmalltest.po.home.EnterpriseUser" >
+    <id column="ENTERPRISE_USER_ID" property="enterpriseUserId" jdbcType="VARCHAR" />
+    <result column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_NAME" property="enterpriseName" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_ADDRESS" property="enterpriseAddress" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_CONTACT" property="enterpriseContact" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_ZIP_CODE" property="enterpriseZipCode" jdbcType="VARCHAR" />
+    <result column="ENTERPRISE_STATUS" property="enterpriseStatus" jdbcType="VARCHAR" />
+    <result column="AVAILABLE_INTEGRAL" property="availableIntegral" jdbcType="INTEGER" />
+    <result column="FREEZING_INTEGRAL" property="freezingIntegral" jdbcType="INTEGER" />
+    <result column="MODIFI_TIME" property="modifiTime" jdbcType="TIMESTAMP" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+    <association property="user" javaType="com.jero.motelmalltest.po.user.User" resultMap="UserMap"/>
+  </resultMap>
+  
+  <resultMap id="UserMap" type="com.jero.motelmalltest.po.user.User" >
+    <id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="REGISTER_PHONE" property="registerPhone" jdbcType="VARCHAR" />
+    <result column="REGISTER_EMAIL" property="registerEmail" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="NICKNAME" property="nickname" jdbcType="VARCHAR" />
+    <result column="BIRTH" property="birth" jdbcType="TIMESTAMP" />
+    <result column="USER_GENDER" property="userGender" jdbcType="CHAR" />
+    <result column="USER_TYPE" property="userType" jdbcType="VARCHAR" />
+    <result column="USER_PHOTO" property="userPhoto" jdbcType="VARCHAR" />
+    <result column="USER_STATUS" property="userStatus" jdbcType="VARCHAR" />
+    <result column="USER_LEVEL" property="userLevel" jdbcType="VARCHAR" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="VISIT_IP" property="visitIp" jdbcType="VARCHAR" />
+    <result column="COMMENTS" property="comments" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="enterpriseUserList" resultMap="BaseResultMap">
+  SELECT 
+	  A.ENTERPRISE_USER_ID,A.USER_ID,A.ENTERPRISE_NAME,A.ENTERPRISE_ADDRESS,
+	  A.ENTERPRISE_CONTACT,A.ENTERPRISE_ZIP_CODE,A.ENTERPRISE_STATUS,
+	  A.AVAILABLE_INTEGRAL,A.FREEZING_INTEGRAL,A.MODIFI_TIME,A.COMMENTS,
+	  B.USER_ID, B.LOGIN_NAME,B.REGISTER_PHONE,B.REGISTER_EMAIL,B.PASSWORD,B.NICKNAME, 
+	  B.BIRTH,B.USER_GENDER,B.USER_TYPE,B.USER_PHOTO,B.USER_STATUS,B.USER_LEVEL, 
+	  B.CREATE_TIME,B.UPDATE_TIME,B.VISIT_IP,B.COMMENTS
+  FROM ENTERPRISE_USER A JOIN User B ON A.USER_ID = B.USER_ID
+  ORDER BY B.CREATE_TIME
+  LIMIT 4
+  </select>
+  
+</mapper>
