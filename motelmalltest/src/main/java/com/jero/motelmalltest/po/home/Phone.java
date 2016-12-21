@@ -12,12 +12,10 @@ public class Phone {
 	private String ram;// (运行内存)
 	private String sc;// (存储容量)
 	private String networkType;// (网络类型)
-
 	private String networkMold;// (网络模式)
 	private String touchScreenType;// (触摸屏类型)
 	private String resolutionRatio;// (分辨率)
 	private String postpositionCamera;// (后置摄像头)
-
 	private String cameraType;// (摄像头类型)
 	private String videoFormat;// (视频格式)
 	private String style;// (款式)

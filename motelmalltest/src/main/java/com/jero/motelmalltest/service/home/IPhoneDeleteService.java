@@ -1,5 +1,17 @@
 package com.jero.motelmalltest.service.home;
 
-public interface IPhoneDeleteService {
+import com.jero.motelmalltest.po.home.Phone;
 
+/**
+ * 
+ * @author Administrator
+ *
+ */
+public interface IPhoneDeleteService {
+	/**
+	 * 
+	 * @param phone
+	 * @return
+	 */
+	int delete(Phone phone);
 }
