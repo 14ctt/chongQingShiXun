@@ -12,7 +12,6 @@
 <%@ include file="/WEB-INF/jsp/header.jsp"%>
 <script type="text/javascript">  
         <%--JS gloable varilible--%>  
-        var contextPath =${jsonList};
 </script>
 <script type="text/javascript" src="${webtxc}/js/jquery.x_down.js"></script>
 <script type="text/javascript" src="${webtxc}/myjs/home/home.js?v=2016052702"></script>
@@ -252,24 +251,13 @@
 				</div>
 
 				<ul class="M-UL01 fl cl" id="homemoto">
-				<!--  
-					<input type="hidden" id="hiddenlist" value="${list}"/>
-					<c:forEach items="${list}" var="goods">
-						${list}
-						<li class="cl">
-						<a href=""><img src="${webtxc}/images/m-img22.jpg" width="155" height="115" /></a>
-							<p>大狗摩托 越野车</p>
-							<p style="color: #999;">${goods.enterpriseUser.enterpriseName}</p>
-							<div class="M-price cl">
-								<span><img
-									style="vertical-align: middle; margin-top: -2px;"
-									src="${webtxc}/images/m-img23.jpg" width="20" height="20" />8454</span>
-								<em class="fr">销量：152辆</em>
-							</div>
-						</li>
-					</c:forEach>
-				-->	
+				<c:forEach var="it" items="${list}">
+					${it.id}<br/>
+					${it.name}
+				</c:forEach>
+				
 				</ul>
+				
 			</div>
 
 			<div class="M-indexR fr cl">

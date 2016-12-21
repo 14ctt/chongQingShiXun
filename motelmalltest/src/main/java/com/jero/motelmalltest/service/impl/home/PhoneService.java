@@ -1,24 +1,24 @@
 package com.jero.motelmalltest.service.impl.home;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jero.motelmalltest.mapper.home.PhoneDeleteMapper;
+import com.jero.motelmalltest.mapper.home.PhoneMapper;
 import com.jero.motelmalltest.po.home.Phone;
-import com.jero.motelmalltest.service.home.IPhoneDeleteService;
-
+import com.jero.motelmalltest.service.home.IPhoneService;
 @Service
-public class PhoneDeleteService implements IPhoneDeleteService {
-
+public class PhoneService implements IPhoneService{
 	@Autowired
-	// 依赖注入
-	private PhoneDeleteMapper phoneDateleMapper;
-
+	private PhoneMapper phoneMapper;
+	
 	@Transactional
-	public int delete(Phone phone) {
+	@Override
+	public int up(Phone phone) {
 		// TODO Auto-generated method stub
-		return phoneDateleMapper.delete(phone);
+		return phoneMapper.up(phone);
 	}
 
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jero.motelmalltest.mapper.home.PhoneMapper" >
+  <resultMap id="GoodsMap" type="com.jero.motelmalltest.po.home.Phone" >
+  		<result column="name" property="name" jdbcType="VARCHAR"/>
+  		<result column="image" property="image" jdbcType="VARCHAR"/>
+  		<result column="type" property="type" jdbcType="VARCHAR"/>
+  		<result column="color" property="color" jdbcType="VARCHAR"/>
+  		<result column="os" property="os" jdbcType="VARCHAR"/>
+  		<result column="cellType" property="cellType" jdbcType="VARCHAR"/>
+  		<result column="bc" property="bc" jdbcType="VARCHAR"/>
+  		<result column="ram" property="ram" jdbcType="VARCHAR"/>
+  		<result co1umn="sc" property="sc" jdbcType="VARCHAR"/>
+  		<result column="networkType" property="networkType" jdbcType="VARCHAR"/>
+  		<result column="networkMold" property="networkMold" jdbcType="VARCHAR"/>
+  		<result column="touchScreenType" property="touchScreenType" jdbcType="VARCHAR"/>
+  		<result column="resolutionRatio" property="resolutionRatio" jdbcType="VARCHAR"/>
+  		<result column="postpositionCamera" property="postpositionCamera" jdbcType="VARCHAR"/>
+  		<result column="cameraType" property="cameraType" jdbcType="VARCHAR"/>
+  		<result column="videoFormat" property="videoFormat" jdbcType="VARCHAR"/>
+  		<result column="style" property="style" jdbcType="VARCHAR"/>
+  		<result column="keyboardType" property="keyboardType" jdbcType="VARCHAR"/>
+  		<result column="thickness" property="thickness" jdbcType="VARCHAR"/>
+
+  </resultMap>
+  <insert id="up">
+    insert into phone (name,		image,		type,			color,			os,		cellType,		
+    					bc,			ram,		sc,				networkType,	touchScreenType, networkMold,
+    					resolutionRatio,		postpositionCamera,				cameraType,		videoFormat,
+    					style,		keyboardType,thickness ) 
+    values(
+    #{name},             #{image},            	#{type},                #{color},       #{os},          
+    #{cellType},         #{bc},					#{ram},              	#{sc},          #{networkType}, #{touchScreenType}, 
+     #{networkMold},
+     #{resolutionRatio},  	#{postpositionCamera},  #{cameraType},  #{videoFormat},  #{style},
+    #{keyboardType},     #{thickness});
+  </insert>
+
+  
+  
+</mapper>
