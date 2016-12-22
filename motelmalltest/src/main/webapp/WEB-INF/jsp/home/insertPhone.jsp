@@ -5,7 +5,6 @@
 <html>
 <head>
 <title>用户首页</title>
-<script type="text/javascript" src="jquery/jquery-1.8.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <style type="text/css">
@@ -58,11 +57,6 @@
 }
 
 </style>
-<script>
-	$(function(){
-		alert("dsfsdf");
-	});
-</script>
 </head>
 <body>
 <form action="${webtxc}/home/goods/getPhone.do" method="post" enctype="multipart/form-datas">
@@ -72,7 +66,7 @@
 		<div class="p_form">
 		
 	品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌:<input name="name" placeholder="用户密码"/>
-图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片:<input name="image" type="file" accept=".png,.gif,.jpeg"/><br/>
+图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片:<input name="image" type="file"/><br/>
 型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input name="type" placeholder="x9Plus"/>
 手机颜色:<input name="color" placeholder="金色 玫瑰金"/><br/>
 操作系统:<input name="os" placeholder="安卓"/>

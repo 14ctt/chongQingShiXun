@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.jero.motelmalltest.mapper.home.GoodsMapper" >
   
-   <resultMap id="GoodsMap" type="com.jero.motelmalltest.po.home.text" >
+   <resultMap id="GoodsMap" type="com.jero.motelmalltest.po.home.Phone" >
     <id column="id" property="id" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
@@ -13,8 +13,7 @@
   <select id="goodsList" resultMap="GoodsMap">
   SELECT
   phone.`name`
-  FROM `phone`
-  
+  FROM `phone`  
   <where>
   	<if test="name != null and name != ''">
   		phone.NAME LIKE '%${name}%'
@@ -22,5 +21,39 @@
   </where>
   </select>
   
+ <select id="goodsText" resultMap="GoodsMap">
+SELECT
+phone.`name`
+FROM
+phone 
+ </select>
+  <select id="goodsLis" resultMap="GoodsMap">
+ SELECT
+phone.`name`,
+phone.image,
+phone.type,
+phone.color,
+phone.os,
+phone.cellType,
+phone.bc,
+phone.ram,
+phone.sc,
+phone.networkType,
+phone.touchScreenType,
+phone.networkMold,
+phone.resolutionRatio,
+phone.postpositionCamera,
+phone.cameraType,
+phone.videoFormat,
+phone.style,
+phone.keyboardType,
+phone.thickness
+FROM `phone`
+  <where>
+  	<if test="name != null and name != ''">
+  		phone.name=#{name}
+  	</if>
+  </where>
+  </select>
   
 </mapper>
