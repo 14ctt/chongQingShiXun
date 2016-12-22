@@ -10,7 +10,7 @@
   		<result column="cellType" property="cellType" jdbcType="VARCHAR"/>
   		<result column="bc" property="bc" jdbcType="VARCHAR"/>
   		<result column="ram" property="ram" jdbcType="VARCHAR"/>
-  		<result column="sc" property="sc" jdbcType="VARCHAR"/> 
+  		<result column="sc" property="sc" jdbcType="VARCHAR"/>
   		<result column="networkType" property="networkType" jdbcType="VARCHAR"/>
   		<result column="networkMold" property="networkMold" jdbcType="VARCHAR"/>
   		<result column="touchScreenType" property="touchScreenType" jdbcType="VARCHAR"/>

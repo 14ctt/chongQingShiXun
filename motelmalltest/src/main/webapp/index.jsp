@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/jsp/common.jsp"%>
+
 <!Doctype html>
 <html>
 <head>
@@ -173,24 +174,25 @@ body {
 	 #dv1{
 	      width:811px;
 	      height:318px;
+	      border:1px solid gray;
+	      border-bottom: 1px solid gray;
+	      	      border-right: 1px solid gray;
 	 
 	   }
 	   #dv2{
 	      width:811px;
 	      height:319px;
+	      border:1px solid gray;
 	   }
 	   #dv3{
 	      width:811px;
 	      height:319px;
+	     border:1px solid gray;
 	   }
 	   #dv4{
 	     width:811px;
 	      height:319px;
-	   }
-	   iframe{
-　background:transparent;
-background-color:rgba(255,255,255,0.1);
-
+	     border:1px solid gray;
 	   }
 </style>
 </head>
@@ -209,7 +211,7 @@ background-color:rgba(255,255,255,0.1);
 
 
 	<div class="search">
-		<input type="text" /> <a href="#">百度一下</a>
+		<input type="text" name="name"/> <a href="${webtxc}/home/goods/homeShow.do">百度一下</a>
 	</div>
 
 
@@ -219,10 +221,10 @@ background-color:rgba(255,255,255,0.1);
 		    <ul>
 			   <li><a href="#" class="sel">首页</a></li>
 			    <li><a href="#">返回</a></li>
-			   <li><a href="${webtxc}/home/goods/gotoSelect.do" target="select">查看</a></li>
-			   <li><a href="${webtxc}/home/goods/show.do" target="add">增加</a></li>
-			   <li><a href="${webtxc}/home/goods/updateshow.do" target="delete">删除</a></li>
-			   <li><a href="${webtxc}/home/goods/updateshow.do" target="update">修改</a></li>
+			   <li><a href="${webtxc}/home/goods/showGoods.do?goodsName=${it.goodsName}">查看</a></li>
+			   <li><a href="${webtxc}/home/goods/showLook.do?goodsName=${hg}">查看所有</a></li>
+			   <li><a href="#">删除</a></li>
+			   <li><a href="#">修改</a></li>
 			   <li class="na_select">
 			      <a href="#">活动</a>
 				  <div class="na_bbs">
@@ -243,14 +245,14 @@ background-color:rgba(255,255,255,0.1);
 
 	<div class="nav">
 		<div class="menu">
-			<a href="#" class="sel">查询</a> <a href="#">添加</a> <a href="#">修改</a>
-			<a href="#">删除</a> <a href="#" class="tool"><span></span></a>
+			<a href="#" class="sel">珠宝</a> <a href="#">女装</a> <a href="#">腕表</a>
+			<a href="#">跑车</a> <a href="#" class="tool"><span></span></a>
 		</div>
 		<div class="cont">
-			<div id="dv1"><iframe width="100%" height="100%" name="select" src="${webtxc}/home/goods/gotoSelect.do"></iframe></div>
-			<div id="dv2"><iframe width="100%" height="100%" name="add" src="${webtxc}/home/goods/show.do"></iframe></div>
-			<div id="dv3"><iframe width="100%" height="100%" name="update" src="${webtxc}/home/goods/updateshow.do"></iframe></div>
-			<div id="dv4"><iframe width="100%" height="100%" name="delete" src="${webtxc}/home/goods/updateshow.do"></iframe></div>
+			<div id="dv1">525555</div>
+			<div id="dv2">你是猪吗</div>
+			<div id="dv3">为什么追我</div>
+			<div id="dv4">452475</div>
 		</div>
 	</div>
 

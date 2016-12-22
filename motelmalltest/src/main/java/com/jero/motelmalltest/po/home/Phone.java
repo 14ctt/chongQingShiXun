@@ -1,31 +1,39 @@
 package com.jero.motelmalltest.po.home;
 
 public class Phone {
-	//private int id;
-	private String name;//(手机名称) 
-	private String image;//（图片）
-	private String type;//(型号（G480）) 
-	private String color;//(手机颜色) 
-	private String os;//(操作系统) 
-	private String cellType;//(电池类型（不可拆卸）) 
-	private String bc;//(电池容量) 
-	private String ram;//(运行内存) 
-	private String sc;//(存储容量) 
-	private String networkType;//(网络类型) 
+	private Integer id;
+	private String name;// (手机名称)
+	private String image;// （图片）
+	private String type;// (型号（G480）)
+	private String color;// (手机颜色)
+	private String os;// (操作系统)
+	private String cellType;// (电池类型（不可拆卸）)
+	private String bc;// (电池容量)
+	private String ram;// (运行内存)
+	private String sc;// (存储容量)
+	private String networkType;// (网络类型)
 
-	private String networkMold;//(网络模式) 
-	private String touchScreenType;//(触摸屏类型) 
-	private String resolutionRatio;//(分辨率) 
-	private String postpositionCamera;//(后置摄像头) 
+	private String networkMold;// (网络模式)
+	private String touchScreenType;// (触摸屏类型)
+	private String resolutionRatio;// (分辨率)
+	private String postpositionCamera;// (后置摄像头)
 
-	private String cameraType;//(摄像头类型) 
-	private String videoFormat;//(视频格式) 
-	private String style;//(款式)  
-	private String keyboardType;//(键盘类型) 
-	private String thickness;//（厚度） 
-	
+	private String cameraType;// (摄像头类型)
+	private String videoFormat;// (视频格式)
+	private String style;// (款式)
+	private String keyboardType;// (键盘类型)
+	private String thickness;// （厚度）
+
 	public Phone() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -179,7 +187,5 @@ public class Phone {
 	public void setThickness(String thickness) {
 		this.thickness = thickness;
 	}
-
-	
 
 }
