@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>用户首页</title>
+ 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <style type="text/css">
@@ -57,6 +58,51 @@
 }
 
 </style>
+<%@ include file="/WEB-INF/jsp/header.jsp"%> 
+<link rel="stylesheet" href="${webtxc}/plugin/kindeditor417/themes/default/default.css" />      
+<script charset="utf-8" src="${webtxc}/plugin/kindeditor417/kindeditor.js"></script>
+<script charset="UTF-8" src="${webtxc}/plugin/kindeditor417/lang/zh_CN.js"></script>
+<script type="text/javascript">
+$(function(){
+	KindEditor.ready(function(K){
+	    var uploadbutton = K.uploadbutton({
+	      button : K('#imgBtn')[0],
+	      fieldName : 'imgFile',
+	      url : path+'/plugin/kindeditor417/jsp/upload_json.jsp',
+	      afterUpload : function(data) {
+	    	  console.info(data)
+	              if (data.error === 0) {
+	                    $("input[name='image']").val(data.url);
+	                    $("#goodsImg").attr('src',path+'/'+data.url.substring(data.url.indexOf("files")));
+	              }
+	      }
+		     });
+		     uploadbutton.fileBox.change(function(e) {
+	     	 uploadbutton.submit();
+			 });  
+		  var editor = K.editor({
+			uploadJson: path+'/plugin/kindeditor417/jsp/upload_json.jsp',
+	     fileManagerJson: path+'/plugin/kindeditor417/jsp/file_manager_json.jsp',
+	     allowFileManager: true,
+		});
+	});
+})
+
+</script>
+<script>
+	
+	//验证 
+	$(function(){
+		$("input:not('#image')").blur(function(){
+			var s=$(this).val();
+			if(s.length<=0){
+				alert("内容未填写完全");
+			}
+		});
+		
+	});
+	
+</script>
 </head>
 <body>
 <form action="${webtxc}/home/goods/getPhone.do" method="post" enctype="multipart/form-datas">
@@ -66,9 +112,11 @@
 		<div class="p_form">
 		
 	品&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;牌:<input name="name" placeholder="用户密码"/>
-图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片:<input name="image" type="file"/><br/>
-型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input name="type" placeholder="x9Plus"/>
-手机颜色:<input name="color" placeholder="金色 玫瑰金"/><br/>
+图&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片:<input id="imageInput" name="image" type="text" />
+<input type="button" id="imgBtn" value="选择图片"/>
+<img id="goodsImg" style="width: 300px;height: 200px;"/><br/>
+型&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号:<input  name="type" placeholder="x9Plus"/>
+手机颜色:<input  name="color" placeholder="金色 玫瑰金"/><br/>
 操作系统:<input name="os" placeholder="安卓"/>
 电池类型:<input name="cellType" placeholder="不可拆卸"/><br/>
 电池容量:<input name="bc" placeholder="4000mAh"/>

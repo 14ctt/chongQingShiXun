@@ -7,41 +7,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jero.motelmalltest.mapper.home.GoodsMapper;
-import com.jero.motelmalltest.po.home.Phone;
+import com.jero.motelmalltest.po.home.Goods;
+import com.jero.motelmalltest.po.home.text;
 import com.jero.motelmalltest.service.home.IGoodsService;
 
 /**
- * 
- * @author Administrator
- *
+ * @Description <实现商品业务层接口>
+ * @author  郑启阳
+ * @date  2016年5月26日 下午4:36:40
+ * @version   1.0
  */
 @Service
-public class GoodsService implements IGoodsService {
-	@Autowired
+public class GoodsService implements IGoodsService{
+	
+	@Autowired//依赖注入
 	private GoodsMapper goodsMapper;
 
+	
 	/**
- * 
- */
-	@Transactional
-	@Override
-	public List<Phone> goodsList(Phone t) {
-		// TODO Auto-generated method stub
+	 * @Override IGoodsService<实现这个接口的goodsClassList方法>
+	 * @Description 根据类型商品查询信息
+	 * @return List<Goods>
+	 * @param String className(类型)	
+	 */
+	public List<text> goodsList(text t) {
 		return goodsMapper.goodsList(t);
 	}
-
-	@Transactional
-	@Override
-	public List<Phone> goodsText(Phone t) {
-		// TODO Auto-generated method stub
-		return goodsMapper.goodsText(t);
-	}
-
-	@Transactional
-	@Override
-	public List<Phone> goodsLis(Phone t) {
-		// TODO Auto-generated method stub
-		return goodsMapper.goodsLis(t);
-	}
-
+	
+	/**
+	 * @Override IGoodsService<实现这个接口的goodsListAll方法>
+	 * @Description 商品查询信息
+	 * @return List<Goods>
+	 */
 }
